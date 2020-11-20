@@ -1,5 +1,3 @@
-(import scheme)
-(import (chicken base))
 (import (chicken platform))
 (import r7rs)
 
