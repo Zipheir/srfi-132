@@ -1,0 +1,10 @@
+;;; srfi-132.egg -*- Scheme -*- vim: ft=scheme:
+
+((author "John Cowan (based on SRFI 32 by Olin Shivers)")
+ (maintainer "Sergey Goldgaber")
+ (synopsis "SRFI-132: Sort Libraries")
+ (version "0.1")
+ (category data)
+ (test-dependencies test)
+ (license "BSD")
+ (components (extension srfi-132)))
