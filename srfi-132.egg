@@ -5,7 +5,7 @@
  (synopsis "SRFI-132: Sort Libraries")
  (version "0.1")
  (category data)
- (dependencies r7rs)
+ (dependencies r7rs srfi-27)
  (test-dependencies test)
  (license "BSD")
  (components (extension srfi-132)))
