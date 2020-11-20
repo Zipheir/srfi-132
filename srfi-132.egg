@@ -8,4 +8,6 @@
  (dependencies r7rs srfi-27)
  (test-dependencies test)
  (license "BSD")
- (components (extension srfi-132)))
+ (components
+  (extension srfi.132.sorting (source "srfi-132.scm"))))
+
