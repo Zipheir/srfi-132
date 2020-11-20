@@ -1,13 +1,15 @@
 * SRFI-132: Sort Libraries
 ** Abstract
 This SRFI describes the API for a full-featured sort toolkit.
+
+For more information see:  [[https://srfi.schemers.org/srfi-132/][SRFI-132: Sort Libraries]]
 ** Rationale
 *** 100 SRFIs later...
-This SRFI is based on SRFI 32 by Olin Shivers, which was withdrawn twelve years ago.
+This SRFI is based on [[https://srfi.schemers.org/srfi-32/srfi-32.txt][SRFI 32]] by Olin Shivers, which was withdrawn twelve years ago.
 
 There are two backward incompatible changes to the API. The most important one is that the comparison predicate now precedes the data rather than following it. Most of the SRFI 32 commenters thought that this is the better order, despite the then-widespread precedent. The other change is that the algorithm-specific procedures have been removed from the SRFI, though not necessarily from the sample implementation. For documentation on them, see SRFI 32 or the source code.
 
-Editorially, the text has been reorganized, removing the massive redundancies. As in R5RS and R7RS, procedures that return nothing of interest, and in SRFI 32 returned zero or more unspecified values, are now specified to return one otherwise unspecified value. The multiple packages, most with only a few procedures, into which SRFI 32 is divided have been consolidated. References to SRFI 95 and R6RS equivalents have been added.
+Editorially, the text has been reorganized, removing the massive redundancies. As in R5RS and R7RS, procedures that return nothing of interest, and in SRFI 32 returned zero or more unspecified values, are now specified to return one otherwise unspecified value. The multiple packages, most with only a few procedures, into which SRFI 32 is divided have been consolidated. References to [[https://srfi.schemers.org/srfi-95/srfi-95.html][SRFI 95]] and [[http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-5.html#node_chap_4][R6RS]] equivalents have been added.
 *** What vs. how
 In SRFI 32 there were two different interfaces: "what" (simple) and "how" (detailed).
 
@@ -21,7 +23,7 @@ Therefore, only the "what" interface has been retained. The sample implementatio
 *** Consistency across procedure signatures
 Procedures share common signatures wherever possible, to facilitate switching a given call from one procedure to another.
 *** Ordering parameter before data parameter
-These procedures uniformly observe the following parameter order: the ordering, equality, or comparison argument precedes the argument(s) denoting the data to be sorted. In SRFI 32, the data-first convention was used, because it was consistent with all the implementations examined in 2002, with the sole exception of Chez Scheme. However, R6RS adopted the procedure-first convention, which is more consistent with other Scheme libraries that put the procedure first -- the "operation currying" convention, as in for-each or map or find. This SRFI uses the R6RS convention throughout.
+These procedures uniformly observe the following parameter order: the ordering, equality, or comparison argument precedes the argument(s) denoting the data to be sorted. In SRFI 32, the data-first convention was used, because it was consistent with all the implementations examined in 2002, with the sole exception of Chez Scheme. However, [[http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-5.html#node_chap_4][R6RS]] adopted the procedure-first convention, which is more consistent with other Scheme libraries that put the procedure first -- the "operation currying" convention, as in for-each or map or find. This SRFI uses the R6RS convention throughout.
 *** Stability
 A "stable" sort is one that preserves the pre-existing order of equal elements. Suppose, for example, that we sort a list of numbers by comparing their absolute values using abs< (defined below). If we sort a list that contains both 3 and -3, then a stable sort is an algorithm that will not swap the order of these two elements, that is, the answer will look like ... 3 -3 ..., not ... -3 3 ....
 
@@ -69,9 +71,9 @@ In the procedures specified below:
 
   * A v parameter is a vector.
 
-  * An = parameter is an equality predicate. See SRFI 128 for the requirements on equality predicates. Note that neither this SRFI nor its sample implementation depend on SRFI 128.
+  * An = parameter is an equality predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html][SRFI 128]] for the requirements on equality predicates. Note that neither this SRFI nor its sample implementation depend on SRFI 128.
 
-  * A < parameter is an ordering predicate. See SRFI 128 for the requirements on ordering predicates.
+  * A < parameter is an ordering predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html][SRFI 128]] for the requirements on ordering predicates.
 
   * A start parameter or start and end parameter pair are exact non-negative integers such that 0 <= start <= end <= (vector-length v), where v is the related vector
     parameter. If not specified, they default to 0 and the length of the vector, respectively. They are interpreted to select the range [start, end), that is, all elements from index start (inclusive) up to, but not including, index end.
@@ -151,7 +153,7 @@ This procedure is equivalent to the SRFI 95 merge! procedure when applied to lis
 *** Deleting duplicate neighbors
 These procedures delete adjacent duplicate elements from a list or a vector, using a given element-equality procedure. The first/leftmost element of a run of equal elements is the one that survives. The list or vector is not otherwise disordered.
 
-These procedures are linear time -- much faster than the O(n^2) general duplicate-element deletion procedures that do not assume any "bunching" of elements provided by SRFI 1. If you want to delete duplicate elements from a large list or vector, sort the elements to bring equal items together, then use one of these procedures, for a total time of O(n lg n).
+These procedures are linear time -- much faster than the O(n^2) general duplicate-element deletion procedures that do not assume any "bunching" of elements provided by [[https://srfi.schemers.org/srfi-1/srfi-1.html][SRFI 1]]. If you want to delete duplicate elements from a large list or vector, sort the elements to bring equal items together, then use one of these procedures, for a total time of O(n lg n).
 
 The equality procedure is always invoked as (= x y), where x comes before y in the containing list or vector.
 
