@@ -254,3 +254,5 @@ Short summary: no restrictions.
 While Olin wrote all of this code himself, he read a lot of code before he began writing. However, all such code is, itself, either open source or public domain, rendering irrelevant any issue of "copyright taint."
 
 Hence the sample implementation is Copyright © 1998 by Olin Shivers and made available under the same copyright as the SRFI text (see above).
+** Version history
+ * [[https://github.com/diamond-lizard/srfi-132/releases/tag/0.1][0.1]] - Ported to Chicken Scheme 5
