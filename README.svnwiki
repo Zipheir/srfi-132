@@ -141,7 +141,7 @@ This procedure is equivalent to the SRFI 95 merge! procedure when applied to lis
 
 <procedure>(vector-merge < v[1] v[2] [ start[1] [ end[1] [ start[2] [ end[2] ] ] ] ])</procedure>
 
-This procedure does not alter its inputs, and returns a newly allocated vector of length (end[1] - start[1]) + (end[2] - start[2]).
+This procedure does not alter its inputs, and returns a newly allocated vector of length {{(end[1] - start[1]) + (end[2] - start[2])}}.
 
 This procedure is equivalent to the SRFI 95 merge procedure when applied to vectors, except that it does not accept a key procedure.
 
@@ -153,9 +153,9 @@ This procedure is equivalent to the SRFI 95 merge! procedure when applied to lis
 ==== Deleting duplicate neighbors
 These procedures delete adjacent duplicate elements from a list or a vector, using a given element-equality procedure. The first/leftmost element of a run of equal elements is the one that survives. The list or vector is not otherwise disordered.
 
-These procedures are linear time -- much faster than the O(n^2) general duplicate-element deletion procedures that do not assume any "bunching" of elements provided by [[https://srfi.schemers.org/srfi-1/srfi-1.html|SRFI 1]]. If you want to delete duplicate elements from a large list or vector, sort the elements to bring equal items together, then use one of these procedures, for a total time of O(n lg n).
+These procedures are linear time -- much faster than the {{O(n^2)}} general duplicate-element deletion procedures that do not assume any "bunching" of elements provided by [[https://srfi.schemers.org/srfi-1/srfi-1.html|SRFI 1]]. If you want to delete duplicate elements from a large list or vector, sort the elements to bring equal items together, then use one of these procedures, for a total time of {{O(n lg n)}}.
 
-The equality procedure is always invoked as (= x y), where x comes before y in the containing list or vector.
+The equality procedure is always invoked as {{(= x y)}}, where {{x}} comes before {{y}} in the containing list or vector.
 
 <procedure>(list-delete-neighbor-dups = lis)</procedure>
 
