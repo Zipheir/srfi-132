@@ -59,25 +59,25 @@
 
    ((and (library (srfi 132 use-r6rs-sorting))
          (library (rnrs sorting)))
-    (include "merge.scm")
-    (include "delndups.scm")     ; list-delete-neighbor-dups etc
-    (include "sortp.scm")        ; list-sorted?, vector-sorted?
-    (include "vector-util.scm")
-    (include "sortfaster.scm"))
+    (include "sorting/merge.scm")
+    (include "sorting/delndups.scm")     ; list-delete-neighbor-dups etc
+    (include "sorting/sortp.scm")        ; list-sorted?, vector-sorted?
+    (include "sorting/vector-util.scm")
+    (include "sorting/sortfaster.scm"))
 
    (else
-    (include "delndups.scm")     ; list-delete-neighbor-dups etc
-    (include "lmsort.scm")       ; list-merge, list-merge!
-    (include "sortp.scm")        ; list-sorted?, vector-sorted?
-    (include "vector-util.scm")
-    (include "vhsort.scm")
-    (include "visort.scm")
-    (include "vmsort.scm")       ; vector-merge, vector-merge!
-    (include "vqsort2.scm")
-    (include "vqsort3.scm")
-    (include "sort.scm")))
+    (include "sorting/delndups.scm")     ; list-delete-neighbor-dups etc
+    (include "sorting/lmsort.scm")       ; list-merge, list-merge!
+    (include "sorting/sortp.scm")        ; list-sorted?, vector-sorted?
+    (include "sorting/vector-util.scm")
+    (include "sorting/vhsort.scm")
+    (include "sorting/visort.scm")
+    (include "sorting/vmsort.scm")       ; vector-merge, vector-merge!
+    (include "sorting/vqsort2.scm")
+    (include "sorting/vqsort3.scm")
+    (include "sorting/sort.scm")))
 
-  (include "select.scm")
+  (include "sorting/select.scm")
 
   )
 
