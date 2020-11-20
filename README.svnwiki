@@ -32,17 +32,17 @@ breaking ties between data sets in favor of the first data set -- elements of th
 
 So, if we are merging two lists of numbers ordered by absolute value using the stable merge operation list-merge and abs< compares numbers by their absolute values, then
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-merge abs< '(0 -2 4 8 -10) '(-1 3 -4 7))
-#+END_SRC
+</enscript>
 
 reliably places the 4 of the first list before the equal-comparing -4 of the second list: (0 -1 -2 4 -4 7 8 -10).
 
 Here's a definition of abs<, introduced just for the examples as it is not part of this SRFI:
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (define (abs< x y) (< (abs x) (abs y))))
-#+END_SRC
+</enscript>
 *** All vector operations accept optional subrange parameters
 The vector operations specified below all take optional start and end arguments indicating a selected subrange of a vector's elements. This compensates for the absence in most Schemes of shared subvectors.
 *** Required vs. allowed side-effects
@@ -86,11 +86,11 @@ Passing values to procedures with these parameters that do not satisfy these con
 
 If a procedure is said to return "an unspecified value", this means that nothing at all is said about what the procedure returns, except that it returns one value.
 *** Predicates
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-sorted? < lis)
 
 (vector-sorted? < v [start [ end ] ]
-#+END_SRC
+</enscript>
 
 These procedures return true iff their input list or vector is in sorted order, as determined by <. Specifically, they return #f iff there is an adjacent pair ... X Y ... in the input list or vector such that Y < X in the sense of <. The optional start and end range arguments restrict vector-sorted? to examining the indicated subvector.
 
@@ -99,39 +99,39 @@ These procedures are equivalent to the SRFI 95 sorted? procedure when applied to
 
 These procedures provide basic sorting and merging functionality suitable for general programming. The procedures are named by their semantic properties, i.e., what they do to the data (sort, stable sort, and so forth).
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-sort < lis)
 
 (list-stable-sort < lis)
-#+END_SRC
+</enscript>
 
 These procedures do not alter their inputs, but are allowed to return a value that shares a common tail with a list argument.
 
 The list-stable-sort procedure is equivalent to the R6RS list-sort procedure. It is also equivalent to the SRFI 95 sort procedure when applied to lists, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-sort! < lis)
 
 (list-stable-sort! < lis)
-#+END_SRC
+</enscript>
 
 These procedures are linear update operators -- they are allowed, but not required, to alter the cons cells of their arguments to produce their results. They return a sorted list containing the same elements as lis.
 
 The list-stable-sort! procedure is equivalent to the SRFI 95 sort! procedure when applied to lists, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-sort < v [ start [ end ] ])
 
 (vector-stable-sort < v [ start [ end ] ])
-#+END_SRC
+</enscript>
 
 These procedures do not alter their inputs, but allocate a fresh vector as their result, of length end - start. The vector-stable-sort procedure with no optional arguments is equivalent to the R6RS vector-sort procedure. It is also equivalent to the SRFI 95 sort procedure when applied to vectors, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-sort! < v [ start [ end ] ])
 
 (vector-stable-sort! < v [ start [ end ] ])
-#+END_SRC
+</enscript>
 
 These procedures sort their data in-place. (But note that vector-stable-sort! may allocate temporary storage proportional to the size of the input -- there are no known O(n lg n) stable vector sorting algorithms that run in constant space.) They return an unspecified value.
 
@@ -139,17 +139,17 @@ The vector-sort! procedure with no optional arguments is equivalent to the R6RS 
 *** Merge procedures
 All four merge operations are stable: an element of the initial list lis[1] or vector v[1] will come before an equal-comparing element in the second list lis[2] or vector v[2] in the result.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-merge < lis[1] lis[2])
-#+END_SRC
+</enscript>
 
 This procedure does not alter its inputs, and is allowed to return a value that shares a common tail with a list argument.
 
 This procedure is equivalent to the SRFI 95 merge procedure when applied to lists, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-merge! < lis[1] lis[2])
-#+END_SRC
+</enscript>
 
 This procedure makes only a single, iterative, linear-time pass over its argument lists, using set-cdr!s to rearrange the cells of the lists into the list that is returned -- it works "in place." Hence, any cons cell appearing in the result must have originally appeared in an input. It returns the sorted input.
 
@@ -157,17 +157,17 @@ Additionally, list-merge! is iterative, not recursive -- it can operate on argum
 
 This procedure is equivalent to the SRFI 95 merge! procedure when applied to lists, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-merge < v[1] v[2] [ start[1] [ end[1] [ start[2] [ end[2] ] ] ] ])
-#+END_SRC
+</enscript>
 
 This procedure does not alter its inputs, and returns a newly allocated vector of length (end[1] - start[1]) + (end[2] - start[2]).
 
 This procedure is equivalent to the SRFI 95 merge procedure when applied to vectors, except that it does not accept a key procedure.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-merge! < to from[1] from[2] [ start [ start[1] [ end[1] [ start[2] [ end[2] ] ] ] ] ])
-#+END_SRC
+</enscript>
 
 This procedure writes its result into vector to, beginning at index start, for indices less than end, which is defined as start + (end[1] - start[1]) + (end[2] - start[2]). The target subvector to[start, end) may not overlap either of the source subvectors from[1][start[1], end[1]] and from[2][start[2], end[2]]. It returns an unspecified value.
 
@@ -179,31 +179,31 @@ These procedures are linear time -- much faster than the O(n^2) general duplicat
 
 The equality procedure is always invoked as (= x y), where x comes before y in the containing list or vector.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-delete-neighbor-dups = lis)
-#+END_SRC
+</enscript>
 
 This procedure does not alter its input list, but its result may share storage with the input list.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (list-delete-neighbor-dups! = lis)
-#+END_SRC
+</enscript>
 
 This procedure mutates its input list in order to construct its result. It makes only a single, iterative, linear-time pass over its argument, using set-cdr!s to rearrange the cells of the list into the final result -- it works "in place." Hence, any cons cell appearing in the result must have originally appeared in the input.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-delete-neighbor-dups = v [ start [ end ] ])
-#+END_SRC
+</enscript>
 
 This procedure does not alter its input vector, but rather newly allocates and returns a vector to hold the result.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-delete-neighbor-dups! = v [ start [ end ] ])
-#+END_SRC
+</enscript>
 
 This procedure reuses its input vector to hold the answer, packing it into the index range [start, newend), where newend is the non-negative exact integer that is returned as its value. The vector is not altered outside the range [start, newend).
 **** Examples:
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
     (list-delete-neighbor-dups = '(1 1 2 7 7 7 0 -2 -2))
                => (1 2 7 0 -2)
 
@@ -218,33 +218,33 @@ This procedure reuses its input vector to hold the answer, packing it into the i
   (cons (vector-delete-neighbor-dups! < v 3)
         v))
               => (9 . #(0 0 0 1 2 3 4 5 6 4 4 5 5 6 6))
-#+END_SRC
+</enscript>
 *** Finding the median
 These procedures do not have SRFI 32 counterparts. They find the median element of a vector after sorting it in accordance with an ordering procedure. If the number of elements in v is odd, the middlemost element of the sorted result is returned. If the number of elements is zero, knil is returned. Otherwise, mean is applied to the two middlemost elements in the order in which they appear in v, and whatever it returns is returned. If mean is omitted, then the default mean procedure is (lambda (a b) (/ (+ a b) 2), but this procedure is applicable to non-numeric values as well.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-find-median < v knil [ mean ])
-#+END_SRC
+</enscript>
 
 This procedure does not alter its input vector, but rather newly allocates a vector to hold the intermediate result. Runs in O(n) time.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-find-median! < v knil [ mean ])
-#+END_SRC
+</enscript>
 
 This procedure reuses its input vector to hold the intermediate result, leaving it sorted, but is otherwise the same as vector-find-median. Runs in O(n ln n) time.
 *** Selection
 These procedures do not have SRFI 32 counterparts.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-select! < v k [ start [ end ] ] )
-#+END_SRC
+</enscript>
 
 This procedure returns the kth smallest element (in the sense of the < argument) of the region of a vector between start and end. Elements within the range may be reordered, whereas those outside the range are left alone. Runs in O(n) time.
 
-#+BEGIN_SRC scheme
+<enscript highlight="scheme">
 (vector-separate! < v k [ start [ end ] ] )
-#+END_SRC
+</enscript>
 
 This procedure places the smallest k elements (in the sense of the < argument) of the region of a vector between start and end into the first k positions of that range, and the remaining elements into the remaining positions. Otherwise, the elements are not in any particular order. Elements outside the range are left alone. Runs in O(n) time. Returns an unspecified value.
 ** Implementation
