@@ -62,12 +62,12 @@ already-ordered runs of list structure as-is when doing the merges.
 Most of the procedures described below are variants of two basic operations: sorting and merging. These procedures are consistently named by composing a set of basic
 lexemes to indicate what they do.
 ==== Lexeme Meaning
- * vector The procedure operates upon vectors.
- * list   The procedure operates upon lists.
- * stable This lexeme indicates that the sort is a stable one.
- * sort   The procedure sorts its input data set by some ordering function.
- * merge  The procedure merges two ordered data sets into a single ordered result.
- * !      Procedures that end in ! are allowed, and sometimes required, to reuse their input storage to construct their answer.
+* vector The procedure operates upon vectors.
+* list   The procedure operates upon lists.
+* stable This lexeme indicates that the sort is a stable one.
+* sort   The procedure sorts its input data set by some ordering function.
+* merge  The procedure merges two ordered data sets into a single ordered result.
+* !      Procedures that end in ! are allowed, and sometimes required, to reuse their input storage to construct their answer.
 ==== Types of parameters and return values
 In the procedures specified below:
 
@@ -259,25 +259,25 @@ vector-index checks and generic arithmetic -- so it's really set up for optimiza
 
 The optional-arg parsing, defaulting, and error checking is done with a portable syntax-rules macro. But if the target Scheme has a faster mechanism (e.g., Chez), it's definitely better to switch to using it. Note that argument defaulting and error-checking are interleaved -- there's no need to error-check defaulted start and end args to see if they are fixnums that are legal vector indices for the corresponding vector, etc.
 ==== Files
- * delndups.scm - the delete-neighbor-dups procedures
- * lmsort.scm - list merge sort
- * median.scm - the find-median procedures
- * selection.scm - the selection procedure
- * sort.scm - generic sort and merge procedures
- * sorting-test.scm - test file
- * sortp.scm - sort predicates
- * srfi-132.scm - a Chicken library providing this SRFI
- * srfi-132.sld - an R7RS counterpart of srfi-132.scm
- * vector-util.scm - vector utilities
- * vhsort.scm - vector heap sort
- * visort.scm - vector insert sort
- * vmsort.scm - vector merge sort
- * vqsort2.scm - vector quick sort
+* delndups.scm - the delete-neighbor-dups procedures
+* lmsort.scm - list merge sort
+* median.scm - the find-median procedures
+* selection.scm - the selection procedure
+* sort.scm - generic sort and merge procedures
+* sorting-test.scm - test file
+* sortp.scm - sort predicates
+* srfi-132.scm - a Chicken library providing this SRFI
+* srfi-132.sld - an R7RS counterpart of srfi-132.scm
+* vector-util.scm - vector utilities
+* vhsort.scm - vector heap sort
+* visort.scm - vector insert sort
+* vmsort.scm - vector merge sort
+* vqsort2.scm - vector quick sort
 === Acknowledgements
 Olin thanked the authors of the open source consulted when designing this library, particularly Richard O'Keefe, Donovan Kolbly and the MIT Scheme Team. John thanks Will Clinger for his detailed comments, and both Will Clinger and Alex Shinn for their implementation efforts.
 === Author
- * John Cowan (based on SRFI 32 by Olin Shivers)
- * Ported to Chicken Scheme 5 by Sergey Goldgaber
+* John Cowan (based on SRFI 32 by Olin Shivers)
+* Ported to Chicken Scheme 5 by Sergey Goldgaber
 === Copyright
 SRFI text copyright
 
@@ -295,4 +295,4 @@ While Olin wrote all of this code himself, he read a lot of code before he began
 
 Hence the sample implementation is Copyright © 1998 by Olin Shivers and made available under the same copyright as the SRFI text (see above).
 === Version history
- * [[https://github.com/diamond-lizard/srfi-132/releases/tag/0.1|0.1]] - Ported to Chicken Scheme 5
+* [[https://github.com/diamond-lizard/srfi-132/releases/tag/0.1|0.1]] - Ported to Chicken Scheme 5
