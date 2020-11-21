@@ -13,9 +13,9 @@ Editorially, the text has been reorganized, removing the massive redundancies. A
 ==== What vs. how
 In SRFI 32 there were two different interfaces: "what" (simple) and "how" (detailed).
 
-  * Simple: you specified semantics: datatype (list or vector), mutability, and stability.
+* Simple: you specified semantics: datatype (list or vector), mutability, and stability.
 
-  * Detailed: you specified the datatype and the actual algorithm (quick, heap, insert, merge).
+* Detailed: you specified the datatype and the actual algorithm (quick, heap, insert, merge).
 
 However, the difficulty with exposing specific algorithms by name is that the local optima in the search space of algorithms changes over time. For example, the "qsort" in the musl C library is actually smooth sort, not quick sort; Python and Java have switched from quick sort to timsort; some implementations of the C++ STL use introsort rather than quick sort. Having procedure names that imply e.g. quick sort, that do not actually implement quick sort, is confusing.
 
@@ -67,15 +67,15 @@ lexemes to indicate what they do.
 ==== Types of parameters and return values
 In the procedures specified below:
 
-  * A {{lis}} parameter is a list.
+* A {{lis}} parameter is a list.
 
-  * A {{v}} parameter is a vector.
+* A {{v}} parameter is a vector.
 
-  * An {{=}} parameter is an equality predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html|SRFI 128]] for the requirements on equality predicates. Note that neither this SRFI nor its sample implementation depend on SRFI 128.
+* An {{=}} parameter is an equality predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html|SRFI 128]] for the requirements on equality predicates. Note that neither this SRFI nor its sample implementation depend on SRFI 128.
 
-  * A {{<}} parameter is an ordering predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html|SRFI 128]] for the requirements on ordering predicates.
+* A {{<}} parameter is an ordering predicate. See [[https://srfi.schemers.org/srfi-128/srfi-128.html|SRFI 128]] for the requirements on ordering predicates.
 
-  * A {{start}} parameter or {{start}} and {{end}} parameter pair are exact non-negative integers such that {{0 <= start <= end <= (vector-length v)}}, where {{v}} is the related vector parameter. If not specified, they default to 0 and the length of the vector, respectively. They are interpreted to select the range {{[start, end)}}, that is, all elements from index start (inclusive) up to, but not including, index end.
+* A {{start}} parameter or {{start}} and {{end}} parameter pair are exact non-negative integers such that {{0 <= start <= end <= (vector-length v)}}, where {{v}} is the related vector parameter. If not specified, they default to 0 and the length of the vector, respectively. They are interpreted to select the range {{[start, end)}}, that is, all elements from index start (inclusive) up to, but not including, index end.
 
 Passing values to procedures with these parameters that do not satisfy these constraints is an error.
 
