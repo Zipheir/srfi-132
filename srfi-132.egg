@@ -9,5 +9,5 @@
  (test-dependencies test)
  (license "BSD")
  (components
-  (extension srfi.132.sorting (source "srfi-132.scm"))))
+  (extension srfi-132)))
 

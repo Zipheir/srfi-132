@@ -81,7 +81,7 @@
 
   )
 
-(define-library (srfi 132)
+(define-library (srfi-132)
 
   (export list-sorted?               vector-sorted?
           list-sort                  vector-sort

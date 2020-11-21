@@ -68,7 +68,7 @@
                   (vector-copy  r7rs-vector-copy)
                   (vector-copy! r7rs-vector-copy!))
           (scheme cxr)
-          (only (srfi 27) random-integer))
+          (only (srfi-27) random-integer))
 
   (include "delndups.scm")
   (include "lmsort.scm")
@@ -92,7 +92,7 @@
           r6rs-vector-sort
           r6rs-vector-sort!)
   (import (scheme base)
-          (srfi 132))
+          (srfi-132))
 
   (cond-expand
    ((library (rnrs sorting))
@@ -123,8 +123,8 @@
         (scheme write)
         (scheme process-context)
         (scheme time)
-        (only (srfi 27) random-integer)
-        (srfi 132)
+        (only (srfi-27) random-integer)
+        (srfi-132)
         (local olin)
         (local benchmarking))
 
