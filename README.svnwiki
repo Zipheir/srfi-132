@@ -58,12 +58,12 @@ already-ordered runs of list structure as-is when doing the merges.
 Most of the procedures described below are variants of two basic operations: sorting and merging. These procedures are consistently named by composing a set of basic
 lexemes to indicate what they do.
 ==== Lexeme Meaning
-* vector The procedure operates upon vectors.
-* list   The procedure operates upon lists.
-* stable This lexeme indicates that the sort is a stable one.
-* sort   The procedure sorts its input data set by some ordering function.
-* merge  The procedure merges two ordered data sets into a single ordered result.
-* !      Procedures that end in ! are allowed, and sometimes required, to reuse their input storage to construct their answer.
+* {{vector}} - The procedure operates upon vectors.
+* {{list}}   - The procedure operates upon lists.
+* {{stable}} - This lexeme indicates that the sort is a stable one.
+* {{sort}}   - The procedure sorts its input data set by some ordering function.
+* {{merge}}  - The procedure merges two ordered data sets into a single ordered result.
+* {{!}}      - Procedures that end in ! are allowed, and sometimes required, to reuse their input storage to construct their answer.
 ==== Types of parameters and return values
 In the procedures specified below:
 
