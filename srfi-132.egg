@@ -1,7 +1,5 @@
-;;; srfi-132.egg -*- Scheme -*- vim: ft=scheme:
-
-((author "John Cowan (based on SRFI 32 by Olin Shivers)")
- (maintainer "Sergey Goldgaber")
+((author "John Cowan")
+ (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI-132: Sort Libraries")
  (version "0.1")
  (category data)
@@ -12,4 +10,3 @@
   (extension srfi-132-sorting)
   (extension srfi-132
              (component-dependencies srfi-132-sorting))))
-
