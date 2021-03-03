@@ -4,7 +4,6 @@
  (version "0.2.1")
  (category data)
  (dependencies r7rs)
- (test-dependencies test)
  (license "BSD")
  (components
   (extension srfi-132-sorting)
