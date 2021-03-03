@@ -27,7 +27,8 @@
                   (vector-copy! r7rs-vector-copy!)
                   (vector-fill! r7rs-vector-fill!))
           (scheme cxr)
-          #;(only (srfi 27) random-integer))
+          (only (rename (chicken random) (pseudo-random-integer random-integer))
+                random-integer))
 
   (cond-expand
 
