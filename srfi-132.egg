@@ -1,7 +1,7 @@
 ((author "John Cowan")
  (maintainer "Wolfgang Corcoran-Mathe")
  (synopsis "SRFI-132: Sort Libraries")
- (version "0.2")
+ (version "0.2.1")
  (category data)
  (dependencies r7rs)
  (test-dependencies test)
