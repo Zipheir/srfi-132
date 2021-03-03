@@ -53,6 +53,8 @@
 ;;; (Including Olin's code within the test program would create name
 ;;; conflicts.)
 
+;;; Modified by wcm for use on CHICKEN.
+
 (define-library (local olin)
 
   (export list-merge-sort  vector-merge-sort               ; not part of SRFI 132
@@ -124,6 +126,9 @@
         (scheme write)
         (scheme process-context)
         (scheme time)
+        (only (chicken base) exit)
+        (only (rename (chicken random) (pseudo-random-integer random-integer))
+              random-integer)
         (srfi-132)
         (local olin)
         (local benchmarking))
@@ -149,6 +154,8 @@
           (y x)
           (equal? x y))
       (fail "some test failed")))
+
+(define *all-tests-passed* #t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
@@ -249,6 +256,7 @@
 
 (define (fail token . more)
   (writeln "Error: test failed: " token)
+  (and *all-tests-passed* (set! *all-tests-passed* #f))
   #f)
 
 (stable-sort)
@@ -1678,3 +1686,5 @@
     (run-some-benchmarks 3 1000000))
 
 (display "Done.\n")
+
+(exit (if *all-tests-passed* 0 1))
